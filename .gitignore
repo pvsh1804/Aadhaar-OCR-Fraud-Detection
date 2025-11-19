@@ -1,0 +1,32 @@
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE related
+.vscode/
+.idea/
+
+# Dataset (very large)
+fraud_detection/dataset/
+data/
+
+# Models (large)
+fraud_detection/model/
+
+# Temporary files
+*.jpg
+*.jpeg
+*.png
+tmp_ela.jpg
+enhanced_tess.jpg
+
+# PaddleOCR cache
+C:/Users/*/.paddlex/
+
+# Logs
+*.log
