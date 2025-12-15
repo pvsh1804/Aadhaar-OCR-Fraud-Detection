@@ -1,209 +1,198 @@
-🇮🇳 Aadhaar OCR & Fraud Detection System
-AI-Powered OCR • QR Parsing • Fraud Detection • Synthetic Aadhaar Generator
-📌 Overview
+📌 Aadhaar OCR & Fraud Detection System (AlOCR)
 
-This project provides a complete end-to-end pipeline for processing Aadhaar card images using Artificial Intelligence.
+An end-to-end AI-powered system for Aadhaar card OCR extraction and fraud detection, combining image preprocessing, OCR, QR validation, and deep learning–based forgery detection, delivered with a FastAPI backend and interactive UI.
 
-It includes:
+🚀 Project Overview
 
-Aadhaar text extraction (OCR) using Tesseract + PaddleOCR
+The Aadhaar OCR & Fraud Detection system aims to:
 
-QR code reading (XML & JSON UIDAI formats)
+Extract Aadhaar details accurately from images
 
-QR detection using YOLOv8
+Validate UID using OCR + QR cross-verification
 
-Fraud/Tampering Detection using CNN + Image Forensics
+Detect tampering and forgery using CNN and forensic techniques
 
-Synthetic Aadhaar dataset generation
+Provide a user-friendly web interface for verification
 
-Training pipeline for deep-learning fraud classifier
+Expose APIs for easy integration with external systems
 
-This system works on real, low-quality, blurred, and compressed Aadhaar images.
+🧩 Technology Stack
 
-🧱 Features
+Backend: FastAPI, Python
 
-✔ OCR Extraction
+OCR: Tesseract OCR
 
-Extracts Name, DOB, Gender, Aadhaar Number
+Computer Vision: OpenCV, Pyzbar
 
-Uses Tesseract OCR + preprocessing
+Deep Learning: TensorFlow / Keras (CNN)
 
-Multi-language support (hin, eng, guj)
+Fraud Detection: ELA, Clone Detection, Sharpness Analysis
 
-✔ QR Code Processing
+UI: HTML, CSS, JavaScript (served via FastAPI)
 
-Detects QR using YOLOv8
+Deployment: Render (API), GitHub
 
-Decodes Aadhaar QR (XML + JSON)
+🟢 Milestone 1: Image Preprocessing & Data Preparation
+📅 Objective
 
-Validates QR data
+Prepare Aadhaar images to ensure high OCR accuracy under real-world conditions.
 
-✔ Fraud Detection
+✅ Key Deliverables
 
-CNN classifier trained on synthetic vs real Aadhaar images
+Image normalization and resizing
 
-ELA (Error Level Analysis)
+Skew and rotation correction
 
-Sharpness & Blur detection
+Noise removal and contrast enhancement
 
-Copy-Move cloning detection
+Dataset organization for training and testing
 
-Final combined fraud score
+🔧 Features Implemented
 
-✔ Synthetic Aadhaar Dataset Generation
+Resolution standardization for OCR input
 
-Generates thousands of synthetic Aadhaar-like images
+Deskewing rotated Aadhaar images
 
-Auto QR embedding
+Preprocessing pipeline for consistent OCR results
 
-Random fonts, text positions, degradations
+Support for multiple image formats (JPG, PNG, JPEG)
 
-Tampered images for fraud model training
+📈 Outcome
 
-🎯 Milestones Completed
-🚀 Milestone 1 — Aadhaar OCR + QR Reader
+Significant improvement in OCR readability
 
-Includes:
+Stable preprocessing pipeline for downstream tasks
 
-Image preprocessing
+🟡 Milestone 2: OCR Extraction & QR Code Processing
+📅 Objective
 
-Tesseract + PaddleOCR extraction
+Extract Aadhaar details reliably using OCR and QR-based validation.
 
-Field parsing using regex
+✅ Key Deliverables
 
-YOLO-based QR detection
+English OCR extraction using Tesseract
 
-Full merged output (OCR + QR)
+QR code detection and decoding
 
-🔍 Milestone 2 — Fraud Detection Model
+Regex-based parsing for Aadhaar fields
 
-Includes:
+Fallback OCR when QR is missing
 
-Custom CNN classifier
+🔧 Features Implemented
 
-Training on synthetic and real Aadhaar images
+Extraction of Name, DOB, Gender, Aadhaar Number
 
-Tampering detection (ELA, blur, cloning, artifacts)
+QR detection using OpenCV and Pyzbar
 
-Unified fraud scoring system
+Cross-validation of UID from OCR and QR
 
-🧪 Milestone 3 — Synthetic Aadhaar Image Generator
+UID format and checksum validation
 
-Includes:
+📈 Outcome
 
-Automated Aadhaar image generator
+Reliable Aadhaar data extraction
 
-Random: name, gender, DOB, UID, fonts
+Reduced dependency on QR-only verification
 
-QR embedding (JSON format)
+Robust fallback mechanisms
 
-Random distortions: blur, noise, scratches, compression
+🔵 Milestone 3: Fraud Detection Logic & Rule-Based Analysis
+📅 Objective
 
-Output size: 640×400
+Detect Aadhaar tampering and inconsistencies using rule-based fraud checks.
 
-Used to train the fraud model
+✅ Key Deliverables
 
-🧩 System Architecture
-Input Image
-    │
-    ├── QR Detection (YOLOv8)
-    │       └── QR Parsing (XML + JSON)
-    │
-    ├── OCR Extraction (Tesseract/PaddleOCR)
-    │
-    └── Field Merging (Best Match)
-            │
-            ▼
-    Fraud Detection Engine
-        ├── CNN Fake Probability
-        ├── ELA Artifact Score
-        ├── Clone Region Score
-        ├── Sharpness Score
-        └── Final Fraud Score
+UID mismatch detection
 
-📦 Folder Structure
-Aadhaar-OCR-Fraud-Detection/
-│
-├── ocr/
-│   ├── tesseract_ocr.py
-│   └── paddle_ocr.py
-│
-├── qr_reader/
-│   └── qr_detector.py
-│
-├── fraud_detection/
-│   ├── fraud_detector.py
-│   ├── train_fraud_model.py
-│   ├── generate_ai_aadhaar.py
-│   └── model/
-│
-├── dataset/
-│   ├── real/
-│   ├── synthetic/
-│
-├── test_ocr.py
-├── test_fraud.py
-├── README.md
-└── requirements.txt
+Rule-based fraud flag generation
 
-⚙️ Installation
+Aggregation of multiple fraud indicators
 
-Clone repo
-git clone https://github.com/<your-username>/Aadhaar-OCR-Fraud-Detection
+Decision logic (Genuine vs Suspicious)
 
-Create virtual environment
-python -m venv venv
+🔧 Features Implemented
 
-Activate
+OCR–QR UID cross-verification
 
-Windows: venv\Scripts\activate
+Fraud flag generation on mismatch
 
-Linux/Mac: source venv/bin/activate
+Regex and checksum-based UID validation
 
-Install dependencies
-pip install -r requirements.txt
+Initial fraud scoring logic
 
-▶️ Usage
-1. Run OCR
+📈 Outcome
 
-python test_ocr.py
+Early detection of forged or tampered Aadhaar cards
 
-2. Run Fraud Detection
+Explainable fraud indicators for audit and review
 
-python test_fraud.py
+🔴 Milestone 4: AI-Based Forgery Detection, UI & Deployment
+📅 Objective
 
-3. Generate Synthetic Aadhaar Dataset
+Integrate deep learning, build UI, and deploy the system.
 
-python fraud_detection/generate_ai_aadhaar.py
+✅ Key Deliverables
 
-4. Train Fraud Model
+CNN-based forgery detection model
 
-python fraud_detection/train_fraud_model.py
+Image forensics (ELA, clone detection, sharpness)
 
-📚 Module Descriptions
-OCR Module
+Final fraud score scaling (0–10)
 
-Extracts necessary Aadhaar details:
+Web UI and API deployment
 
-Name
+🔧 Features Implemented
 
-Aadhaar Number
+CNN model to detect forged Aadhaar images
 
-DOB
+Error Level Analysis (ELA) for compression artifacts
 
-Gender
+Clone region detection for copy-paste fraud
 
-QR Module
+Sharpness scoring for blur detection
 
-Parses Aadhaar QR (UIDAI JSON/XML).
-Used for authenticity validation.
+Weighted fraud score (0–10 scale)
 
-Fraud Detection
+Final decision: Genuine / Suspicious
 
-Combines:
+Interactive web UI for upload & verification
 
-Deep learning (CNN)
+REST API (/analyze) with JSON response
 
-Image forensics
+Deployment on Render
 
-Blur / Sharpness detection
+📈 Outcome
+
+End-to-end production-ready system
+
+User-friendly UI + scalable API
+
+Explainable and measurable fraud detection
+
+🌐 API Endpoints
+Endpoint	Method	Description
+/	GET	Root status
+/health	GET	Health check
+/analyze	POST	Aadhaar OCR + Fraud analysis
+/docs	GET	Swagger API docs
+📊 Sample Output
+
+<img width="860" height="560" alt="Screenshot (84)" src="https://github.com/user-attachments/assets/7e7a716a-cb8a-41bd-adab-bcd8dcc2ecba" /> 
+
+<img width="860" height="560" alt="Screenshot (83)" src="https://github.com/user-attachments/assets/7362b7ad-183c-4670-b805-2f5a001d44f9" />
+
+<img width="860" height="560" alt="Screenshot (85)" src="https://github.com/user-attachments/assets/ca18c513-0677-497e-8e9c-62cb777afa46" />
+
+🏁 Final Status
+
+
+✅ All milestones completed successfully
+✅ System tested with real and synthetic samples
+✅ Ready for academic submission and demo
+
+👨‍💻 Author
+
+Prakhar Vishwakarma
+B.Tech CSE (AI & DS)
+MIT World Peace University, Pune
